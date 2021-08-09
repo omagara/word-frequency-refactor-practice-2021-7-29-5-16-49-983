@@ -8,17 +8,10 @@ public class WordFrequencyGame {
     public static final String LINE_BREAK = "\n";
 
     public String getResult(String sentence){
-
-
-
             try {
-
-                //split the input string with 1 to n pieces of spaces
                 List<WordInfo> wordInfoList=getWordInfoList(sentence);
                 return reconstructWordInfo(wordInfoList);
             } catch (Exception e) {
-
-
                 return CALCULATE_ERROR;
             }
         }
