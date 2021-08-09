@@ -7,22 +7,22 @@ public class WordFrequencyGame {
     public static final String CALCULATE_ERROR = "Calculate Error";
     public static final String LINE_BREAK = "\n";
 
-    public String getResult(String sentence){
-            try {
-                List<WordInfo> wordInfoList=getWordInfoList(sentence);
-                return reconstructWordInfo(wordInfoList);
-            } catch (Exception e) {
-                return CALCULATE_ERROR;
-            }
+    public String getResult(String sentence) {
+        try {
+            List<WordInfo> wordInfoList = getWordInfoList(sentence);
+            return reconstructWordInfo(wordInfoList);
+        } catch (Exception e) {
+            return CALCULATE_ERROR;
         }
+    }
 
     private List<WordInfo> getWordInfoList(String sentence) {
         List<String> words = Arrays.asList(sentence.split(EMPTY_SPACE));
         List<WordInfo> wordInfoList = new ArrayList<>();
 
-        for (String word: new HashSet<>(words)){
-            int count = Collections.frequency(words,word);
-            wordInfoList.add(new WordInfo(word,count));
+        for (String word : new HashSet<>(words)) {
+            int count = Collections.frequency(words, word);
+            wordInfoList.add(new WordInfo(word, count));
         }
         wordInfoList.sort((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount());
 
