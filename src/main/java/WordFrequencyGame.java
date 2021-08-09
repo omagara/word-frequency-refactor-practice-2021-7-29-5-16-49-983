@@ -9,9 +9,6 @@ public class WordFrequencyGame {
     public String getResult(String sentence){
 
 
-        if (sentence.split(EMPTY_SPACE).length==1) {
-            return sentence + " 1";
-        } else {
 
             try {
 
@@ -48,7 +45,7 @@ public class WordFrequencyGame {
                 return CALCULATE_ERROR;
             }
         }
-    }
+
 
 
     private Map<String,List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
