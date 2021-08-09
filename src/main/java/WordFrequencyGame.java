@@ -3,6 +3,7 @@ import java.util.*;
 public class WordFrequencyGame {
 
     public static final String EMPTY_SPACE = "\\s+";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getResult(String sentence){
 
@@ -43,7 +44,7 @@ public class WordFrequencyGame {
             } catch (Exception e) {
 
 
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
