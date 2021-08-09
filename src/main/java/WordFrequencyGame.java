@@ -4,6 +4,7 @@ public class WordFrequencyGame {
 
     public static final String EMPTY_SPACE = "\\s+";
     public static final String CALCULATE_ERROR = "Calculate Error";
+    public static final String LINE_BREAK = "\n";
 
     public String getResult(String sentence){
 
@@ -35,7 +36,7 @@ public class WordFrequencyGame {
 
                 wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
-                StringJoiner joiner = new StringJoiner("\n");
+                StringJoiner joiner = new StringJoiner(LINE_BREAK);
                 for (WordInfo w : wordInfoList) {
                     String s = w.getWord() + " " +w.getWordCount();
                     joiner.add(s);
