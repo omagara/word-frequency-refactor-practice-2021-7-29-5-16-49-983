@@ -13,8 +13,8 @@ public class WordFrequencyGame {
         try {
             List<WordInfo> wordInfoList = getWordInfoList(sentence);
             return reconstructWordInfo(sortWordInfo(wordInfoList));
-        } catch (Exception e)  {
-            return CALCULATE_ERROR; // TODO: customized exception
+        } catch (Exception error)  {
+            return CALCULATE_ERROR;
         }
     }
 
