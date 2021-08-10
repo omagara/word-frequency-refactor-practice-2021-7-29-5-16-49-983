@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Collections.frequency;
+
 public class WordFrequencyGame {
 
     public static final String EMPTY_SPACE = "\\s+";
@@ -10,7 +12,7 @@ public class WordFrequencyGame {
     public String getResult(String sentence) {
         try {
             List<WordInfo> wordInfoList = getWordInfoList(sentence);
-            return reconstructWordInfo(wordInfoList);
+            return reconstructWordInfo(sortWordInfo(wordInfoList));
         } catch (Exception e)  {
             return CALCULATE_ERROR; // TODO: customized exception
         }
@@ -18,20 +20,16 @@ public class WordFrequencyGame {
 
     private List<WordInfo> getWordInfoList(String sentence) {
         List<String> words = Arrays.asList(sentence.split(EMPTY_SPACE));
-        List<WordInfo> wordInfoList = new ArrayList<>();
-            //TODO: use stream map
-        for (String word : new HashSet<>(words)) {
-            int count = Collections.frequency(words, word);
-            wordInfoList.add(new WordInfo(word, count));
-        }
-        sortWordInfo(wordInfoList);
-
-
-        return wordInfoList;
+        Set<String> wordInfo = new HashSet<>(words);
+        return wordInfo.stream()
+                .map(word -> new WordInfo(word, frequency(words, word)))
+                .collect(Collectors.toList());
     }
 
-    private void sortWordInfo(List<WordInfo> wordInfoList) {
-        wordInfoList.sort((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount());
+    private List<WordInfo> sortWordInfo(List<WordInfo> wordInfoList) {
+        return wordInfoList.stream()
+                .sorted((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount())
+                .collect(Collectors.toList());
     }
 
     private String reconstructWordInfo(List<WordInfo> wordInfoList) {
