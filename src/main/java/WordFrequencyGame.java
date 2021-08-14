@@ -1,3 +1,5 @@
+import exception.CalculateErrorException;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -14,7 +16,7 @@ public class WordFrequencyGame {
             List<WordInfo> wordInfoList = getWordInfoList(sentence);
             return reconstructWordInfo(sortWordInfo(wordInfoList));
         } catch (Exception error) {
-            return CALCULATE_ERROR;
+            throw new CalculateErrorException(CALCULATE_ERROR);
         }
     }
 
